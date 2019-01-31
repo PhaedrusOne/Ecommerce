@@ -35,7 +35,7 @@ namespace Ecommerce.ViewModels
                 Categories.Add(new SelectListItem
                 {
                     Value = category.ID.ToString(),
-                    Text = category.ToString()
+                    Text = category.Name
                 });
             }
         }

@@ -8,7 +8,6 @@ using Ecommerce.ViewModels;
 using Ecommerce.Data;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Ecommerce.Controllers
 {
@@ -37,7 +36,6 @@ namespace Ecommerce.Controllers
             return View(addProductViewModel);
         }
         [HttpPost]
-        [Route("/Product/Add")]
         public IActionResult Add(AddProductViewModel addProductViewModel)
             
         {
@@ -45,7 +43,6 @@ namespace Ecommerce.Controllers
             {
                 ProductCategory newProductCategory =
                     context.Categories.Single(c => c.ID == addProductViewModel.CategoryID);
-
                 Product newProduct = new Product
                 {
                     Name = addProductViewModel.Name,
