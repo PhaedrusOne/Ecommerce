@@ -20,32 +20,31 @@ namespace Ecommerce.ViewModels
         [Required(ErrorMessage = "You must give your product a price")]
         public float Price { get; set; }
 
-        public ProductType Type { get; set; }
+        [Required]
+        [Display(Name = "Category")]
+        public int CategoryID { get; set; }
 
-        public List<SelectListItem> ProductTypes { get; set; }
+        public List<SelectListItem> Categories { get; set; }
+
+        public AddProductViewModel(IEnumerable<ProductCategory> categories)
+        {
+            Categories = new List<SelectListItem>();
+
+            foreach (ProductCategory category in categories)
+            {
+                Categories.Add(new SelectListItem
+                {
+                    Value = category.ID.ToString(),
+                    Text = category.ToString()
+                });
+            }
+        }
 
         public AddProductViewModel()
         {
-            ProductTypes = new List<SelectListItem>();
-
-            ProductTypes.Add(new SelectListItem
-            {
-                Value = ((int)ProductType.Sale).ToString(),
-                Text = ProductType.Sale.ToString()
-            });
-
-            ProductTypes.Add(new SelectListItem
-            {
-                Value = ((int)ProductType.Clearance).ToString(),
-                Text = ProductType.Clearance.ToString()
-            });
-
-            ProductTypes.Add(new SelectListItem
-            {
-                Value = ((int)ProductType.SoldOut).ToString(),
-                Text = ProductType.SoldOut.ToString()
-            });
 
         }
+
+        
     }
 }

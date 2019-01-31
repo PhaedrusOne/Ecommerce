@@ -13,7 +13,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
-        <th>Type</th>
+        <th>Category</th>
     </tr>
 
     @foreach (var product in Model)
@@ -22,7 +22,7 @@
             <td>@product.Name</td>
             <td>@product.Description</td>
             <td>@product.Price</td>
-            <td>@product.Type</td>
+            <td>@product.Category.Name</td>
         </tr>
     }
 </table> 
