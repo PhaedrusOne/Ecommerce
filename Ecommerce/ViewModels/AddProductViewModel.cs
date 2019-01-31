@@ -20,6 +20,9 @@ namespace Ecommerce.ViewModels
         [Required(ErrorMessage = "You must give your product a price")]
         public float Price { get; set; }
 
+        [Required(ErrorMessage = "You must give a Inventory")]
+        public int Stock { get; set; }
+
         [Required]
         [Display(Name = "Category")]
         public int CategoryID { get; set; }

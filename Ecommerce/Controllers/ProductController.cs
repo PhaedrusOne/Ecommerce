@@ -48,6 +48,7 @@ namespace Ecommerce.Controllers
                     Name = addProductViewModel.Name,
                     Description = addProductViewModel.Description,
                     Price = addProductViewModel.Price,
+                    Stock = addProductViewModel.Stock,
                     Category = newProductCategory
                 };
 

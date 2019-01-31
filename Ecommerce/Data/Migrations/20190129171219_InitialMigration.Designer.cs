@@ -34,6 +34,8 @@ namespace Ecommerce.Data.Migrations
 
                     b.Property<int>("Type");
 
+                    b.Property<int>("Stock");
+
                     b.HasKey("ID");
 
                     b.ToTable("Products");
