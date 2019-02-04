@@ -15,9 +15,11 @@ namespace Ecommerce.ViewModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "You must give your product a description")]
+   
         public string Description { get; set; }
 
         [Required(ErrorMessage = "You must give your product a price")]
+
         public float Price { get; set; }
 
         [Required(ErrorMessage = "You must give a Inventory")]
