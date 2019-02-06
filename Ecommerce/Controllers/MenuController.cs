@@ -31,6 +31,7 @@ namespace Ecommerce.Controllers
 
         public IActionResult Add()
         {
+            
             AddMenuViewModel addMenuViewModel = new AddMenuViewModel();
 
             return View(addMenuViewModel);
@@ -76,6 +77,32 @@ namespace Ecommerce.Controllers
 
             return View(viewModel);
         }
+
+        public IActionResult Remove()
+        {
+            ViewBag.title = "Remove Menu";
+            ViewBag.menus = context.Menus.ToList();
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Remove(int[] menuIds)
+        {
+            foreach (int menuId in menuIds)
+            {
+                Menu theMenu = context.Menus.Single(c => c.ID == menuId);
+                context.Menus.Remove(theMenu);
+            }
+
+            context.SaveChanges();
+
+            return Redirect("/");
+
+        }
+
+
+
 
         [HttpGet]
         public IActionResult AddItem(int id)
