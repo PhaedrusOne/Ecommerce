@@ -9,6 +9,7 @@ namespace Ecommerce.Data
         public DbSet<ProductCategory> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductMenu> ProductMenus { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
