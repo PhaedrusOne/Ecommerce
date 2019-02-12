@@ -102,8 +102,6 @@ namespace Ecommerce.Controllers
         }
 
 
-
-
         [HttpGet]
         public IActionResult AddItem(int id)
         {
