@@ -18,6 +18,7 @@ namespace Ecommerce.Controllers
             this.context = dbContext;
         }
 
+
         public IActionResult Index()
         {
             List<Customer> customers = context.Customers.ToList();
@@ -25,7 +26,6 @@ namespace Ecommerce.Controllers
 
             return View(customers);
         }
-
         public IActionResult Add()
         {
             AddCustomerViewModel addCustomerViewModel = new AddCustomerViewModel();

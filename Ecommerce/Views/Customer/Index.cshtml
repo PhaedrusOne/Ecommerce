@@ -1,5 +1,29 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<Ecommerce.Models.Customer>
+
+<h1>@ViewBag.Title</h1>
+
+    @if (Model.Count == 0)
+    {
+        <p>No customers yet!</p>
+    }
+
+<table class="table">
+    <tr>
+        <th>FName</th>
+        <th>LName</th>
+        <th>Email</th>
+        <th>Password</th>
+    </tr>
+
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.FName</td>
+            <td>@customer.LName</td>
+            <td>@customer.Email</td>
+            <td>@customer.Password</td>
+        </tr>
+    }
+</table>
+
+<p><a asp-controller="Customer" asp-action="Add">Register</a></p>
