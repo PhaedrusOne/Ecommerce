@@ -1,5 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Ecommerce.ViewModels.AddCustomerViewModel
+
+<h1>Add Customer</h1>
+
+
+<form asp-controller="Customer" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="FName"></label>
+        <input class="form-control" asp-for="FName" />
+        <span asp-validation-for="FName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LName"></label>
+        <input class="form-control" asp-for="LName" />
+        <span asp-validation-for="LName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <input type="submit" value="Add Customer" />
+
+</form>
+
