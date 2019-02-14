@@ -1,6 +1,6 @@
 ﻿@model Ecommerce.ViewModels.AddCustomerViewModel
 
-<h1>Add Customer</h1>
+<h1>Register</h1>
 
 
 <form asp-controller="Customer" asp-action="Add" method="post">
@@ -27,6 +27,13 @@
         <input class="form-control" asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
+
+    <div class="form-group">
+        <label asp-for="Verify"></label>
+        <input class="form-control" asp-for="Verify" />
+        <span asp-validation-for="Verify"></span>
+    </div>
+
 
     <input type="submit" value="Add Customer" />
 

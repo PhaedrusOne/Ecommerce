@@ -1,9 +1,10 @@
 ﻿using Ecommerce.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext :DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> Categories { get; set; }

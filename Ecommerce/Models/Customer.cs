@@ -1,13 +1,43 @@
 ﻿
 
+using Microsoft.AspNetCore.Identity;
+
 namespace Ecommerce.Models
 {
-    public class Customer
+    public class Customer //: IdentityUser
     {
+        
         public int ID { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+
+
+        
+
+        public int State(string Loggedin, string Modelvalid)
+       {
+           int Stateval = 0;
+           if (Loggedin == "true")
+           {
+
+                Stateval += 1;
+
+           }
+
+            if (Modelvalid == "true")
+            {
+
+                Stateval += 1;
+
+            }
+
+            return Stateval;
+
+        }
+
+
+
     }
 }

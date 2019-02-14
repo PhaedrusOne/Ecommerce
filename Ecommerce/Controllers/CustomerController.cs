@@ -11,6 +11,12 @@ namespace Ecommerce.Controllers
 {
     public class CustomerController : Controller
     {
+        public static string Loggedin;
+        public static string Modelvalid;
+       
+
+
+
         private readonly ApplicationDbContext context;
 
         public CustomerController(ApplicationDbContext dbContext)
@@ -37,18 +43,42 @@ namespace Ecommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                Customer newCustomer = new Customer
+
+                if (addCustomerViewModel.Verify == addCustomerViewModel.Password)
                 {
-                    FName = addCustomerViewModel.FName,
-                    LName = addCustomerViewModel.LName,
-                    Email = addCustomerViewModel.Email,
-                    Password = addCustomerViewModel.Password
-                };
 
-                context.Customers.Add(newCustomer);
-                context.SaveChanges();
+                    List<Customer> matches = context.Customers.Where(c => c.Email == addCustomerViewModel.Email).ToList();
 
-                return Redirect("/Customer");
+                    if (matches.Count > 0)
+
+                    {
+
+                        ViewBag.error = "That email is already in our system.";
+
+                        return View();
+
+                    }
+
+                    
+
+                    Customer newCustomer = new Customer
+                    {
+                        FName = addCustomerViewModel.FName,
+                        LName = addCustomerViewModel.LName,
+                        Email = addCustomerViewModel.Email,
+                        Password = addCustomerViewModel.Password
+                    };
+
+                    context.Customers.Add(newCustomer);
+                    context.SaveChanges();
+                    Loggedin = "true";
+                    //return Redirect("/Home/Registered");
+                    return Redirect("/Customer");
+
+
+                }
+
+
             }
 
             return View(addCustomerViewModel);

@@ -23,5 +23,8 @@ namespace Ecommerce.ViewModels
         [Required(ErrorMessage = "You must enter correct password")]
         [Display(Name = "Password")]
         public string Password { get; set; }
+
+        [Required]
+        public string Verify { get; set; }
     }
 }
