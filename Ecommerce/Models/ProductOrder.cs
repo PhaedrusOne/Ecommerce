@@ -2,7 +2,7 @@
 
 namespace Ecommerce.Models
 {
-   public class Order_Products
+   public class ProductOrder
    {
       public int OrderID { get; set; }
       public Order Order { get; set; }

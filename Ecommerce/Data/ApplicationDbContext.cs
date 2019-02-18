@@ -11,7 +11,10 @@ namespace Ecommerce.Data
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductMenu> ProductMenus { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<ProductOrder> ProductOrders { get; set; }
+
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -22,6 +25,13 @@ namespace Ecommerce.Data
         {
             modelBuilder.Entity<ProductMenu>()
                 .HasKey(c => new { c.ProductID, c.MenuID });
+
+            modelBuilder.Entity<ProductOrder>()
+               .HasKey(c => new { c.ProductID, c.OrderID });
         }
+
+        
+
+
     }
 }

@@ -45,17 +45,6 @@ namespace Ecommerce.Controllers
         }
 
 
-        public IActionResult Registered()
-        {
-            return View();
-        }
-
-        public IActionResult Logout()
-        {
-            Loggedin = "";
-            return Redirect("/");
-        }
-
         public IActionResult Login()
         {
             return View();
@@ -77,8 +66,8 @@ namespace Ecommerce.Controllers
 
                 if (matches2.Count == 1)
                 {
-                    Customer logusr = matches1.Single(c => c.Password == loginViewModel.Password);
-                    currentuser = logusr;
+                    Customer loguser = matches1.Single(c => c.Password == loginViewModel.Password);
+                    currentuser = loguser;
                     Loggedin = "true";
                     return Redirect("/Home");
                 }
@@ -105,6 +94,19 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Registered()
+        {
+            return View();
+        }
+
+        public IActionResult Logout()
+        {
+            Loggedin = "";
+            return Redirect("/");
+        }
+
 
 
         public IActionResult About()

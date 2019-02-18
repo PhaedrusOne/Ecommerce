@@ -2,12 +2,12 @@
 
 <h1>@ViewBag.Title</h1>
 
-    @if (Model.Count == 0)
-    {
-        <p>No customers yet!</p>
-    }
+@if (Model.Count == 0)
+{
+    <p>No customers yet!</p>
+}
 
-<table class="table">
+<!--<table class="table">
     <tr>
         <th>FName</th>
         <th>LName</th>
@@ -24,6 +24,48 @@
             <td>@customer.Password</td>
         </tr>
     }
-</table>
+</table>-->
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <td colspan="4">Customer List</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <!-- You can adjust the width of table columns as well -->
+                        <th class="col-md-3">Email Address</th>
+                            
+
+                            <!-- Use text alignment like text-center or text-right -->
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Password</th>
+                        
+                    </tr>
+                     @foreach (var customer in Model)
+                     {
+
+                            <tr>
+                                <td><a href="#">@customer.Email</a></td>
+                                <td>@customer.FName</td>
+                                <td>@customer.LName</td>
+                                <td>@customer.Password</td>
+                            </tr>
+
+                     }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <p><a asp-controller="Customer" asp-action="Add">Register</a></p>
