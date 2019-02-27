@@ -47,15 +47,26 @@ namespace Ecommerce.Controllers
                 if (addCustomerViewModel.Verify == addCustomerViewModel.Password)
                 {
 
-                    List<Customer> matches = context.Customers.Where(c => c.Email == addCustomerViewModel.Email).ToList();
+                    // List<Customer> matches = context.Customers.Where(c => c.Email == addCustomerViewModel.Email);
+                    var matches = 0;
 
-                    if (matches.Count > 0)
 
+
+                    List<Customer> customers = context.Customers.ToList();
+                    foreach (Customer customer in customers)
                     {
+                       
 
-                        ViewBag.error = "That email is already in our system.";
+                        if(customer.Email == addCustomerViewModel.Email)
+                        {
+                            matches = 1;
 
-                        return View();
+                            ViewBag.error = "That email is already in our system.";
+
+                        }
+
+
+                        
 
                     }
 

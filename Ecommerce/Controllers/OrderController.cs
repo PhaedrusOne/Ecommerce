@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Ecommerce.Data;
 using Ecommerce.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -13,19 +14,7 @@ namespace Ecommerce.Controllers
 {
     public class OrderController : Controller
     {
-        private readonly ApplicationDbContext context;
 
-        public  OrderController(ApplicationDbContext dbContext)
-        {
-            this.context = dbContext;
-        }
-
-
-        public IActionResult Index()
-        {
-            List<Order> Orders = context.Orders.ToList();
         
-            return View(Orders);
-        }
     }
 }

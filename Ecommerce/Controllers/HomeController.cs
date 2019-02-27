@@ -15,6 +15,7 @@ namespace Ecommerce.Controllers
     {
         public static string Loggedin;
         public static string Modelvalid;
+        public static string Session;
         public static Customer currentuser = new Customer(); //("email", "password", "Hash")
 
         private readonly ApplicationDbContext context;
@@ -69,6 +70,7 @@ namespace Ecommerce.Controllers
                     Customer loguser = matches1.Single(c => c.Password == loginViewModel.Password);
                     currentuser = loguser;
                     Loggedin = "true";
+                    //Session["a"] = Texr;
                     return Redirect("/Home");
                 }
 
