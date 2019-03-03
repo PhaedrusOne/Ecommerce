@@ -25,6 +25,8 @@ namespace Ecommerce.ViewModels
         [Required(ErrorMessage = "You must give a Inventory")]
         public int Stock { get; set; }
 
+        public string Photo { get; set; }
+
         [Required]
         [Display(Name = "Category")]
         public int CategoryID { get; set; }

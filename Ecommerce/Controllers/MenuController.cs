@@ -105,6 +105,7 @@ namespace Ecommerce.Controllers
         [HttpGet]
         public IActionResult AddItem(int id)
         {
+            ViewBag.title = "Add Item to Menu: ";
             Menu menu = context.Menus.Single(m => m.ID == id);
             List<Product> products = context.Products.ToList();
             return View(new AddMenuItemViewModel(menu, products));
@@ -133,7 +134,7 @@ namespace Ecommerce.Controllers
                     context.ProductMenus.Add(menuItem);
                     context.SaveChanges();
                 }
-
+                ViewBag.title = "Add Item to Menu: ";
                 return Redirect(string.Format("/Menu/ViewMenu/{0}", addMenuItemViewModel.MenuID));
 
             }

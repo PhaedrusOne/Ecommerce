@@ -14,6 +14,8 @@ namespace Ecommerce.Models
         public int CustomerID { get; set; }
         public Customer Customer { get; set; }
 
-        public List<ProductOrder> ProductOrders { get; set; }
+        public List<ProductOrder> ProductOrders { get; set; } = new List<ProductOrder>();
+        //public int Quantity { get; internal set; }
+        //public double TotalSale { get; set; }
     }
 }

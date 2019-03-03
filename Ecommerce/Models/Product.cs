@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-
+using Ecommerce.Controllers;
 
 namespace Ecommerce.Models
 {
@@ -10,18 +11,28 @@ namespace Ecommerce.Models
        public int ID { get; set; }
        public string Name { get; set; }
        public string Description { get; set; }
+       [Required]
+       [Range(0.01, double.MaxValue, ErrorMessage = "Please enter a positive price")]
        public float Price { get; set; }
        public int Stock { get; set; }
-       //public string ImageUrl { get; set; }
+       public string Photo { get; set; }
        //public string ImageThumbnailUrl { get; set; }
 
-       //public int SID { get; set; }
-       //public Suppliers Suppliers { get; set; }
+       
+      
        
        public int CategoryID { get; set; }
        public ProductCategory Category { get; set; }
 
-       public List<ProductMenu> ProductMenus { get; set; }
+        internal static Product GetProduct(CommerceContext context, int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<ProductMenu> ProductMenus { get; set; }
+
+        public List<ProductOrder> ProductOrders { get; set; }
+       //public int Quantity { get; set; }
+       //public double TotalSale { get; set; }
     }
 }

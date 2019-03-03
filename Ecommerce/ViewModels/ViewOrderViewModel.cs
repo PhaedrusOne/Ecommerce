@@ -10,5 +10,9 @@ namespace Ecommerce.ViewModels
     {
         public IList<ProductOrder> Items { get; set; }
         public Order Order { get; set; }
+
+        public DateTime OrderDate { get; set; }
+
+        public DateTime DeliverDate { get; set; }
     }
 }
