@@ -34,6 +34,7 @@ namespace Ecommerce
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -55,6 +56,8 @@ namespace Ecommerce
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseIdentity();
+            app.UseSession();
+
 
             app.UseAuthentication();
 

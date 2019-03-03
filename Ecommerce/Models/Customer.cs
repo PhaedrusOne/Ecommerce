@@ -1,6 +1,8 @@
 ﻿
 
+using System;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Models
 {
@@ -37,7 +39,9 @@ namespace Ecommerce.Models
 
         }
 
-
-
+        internal int State(Func<IActionResult> loggedIn, string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

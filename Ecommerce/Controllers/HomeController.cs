@@ -8,6 +8,7 @@ using Ecommerce.Data;
 using Ecommerce.Models;
 using Ecommerce.ViewModels;
 using System.Security.Policy;
+using Microsoft.AspNetCore.Http;
 
 namespace Ecommerce.Controllers
 {
@@ -71,6 +72,7 @@ namespace Ecommerce.Controllers
                     currentuser = loguser;
                     Loggedin = "true";
                     //Session["a"] = Texr;
+                    HttpContext.Session.GetString("email");
                     return Redirect("/Home");
                 }
 
@@ -106,6 +108,7 @@ namespace Ecommerce.Controllers
 
         public IActionResult Logout()
         {
+            HttpContext.Session.Remove("email");
             Loggedin = "";
             return Redirect("/");
         }

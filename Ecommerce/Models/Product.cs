@@ -32,7 +32,8 @@ namespace Ecommerce.Models
         public List<ProductMenu> ProductMenus { get; set; }
 
         public List<ProductOrder> ProductOrders { get; set; }
-       //public int Quantity { get; set; }
-       //public double TotalSale { get; set; }
+        
+        //public int Quantity { get; set; }
+        //public double TotalSale { get; set; }
     }
 }

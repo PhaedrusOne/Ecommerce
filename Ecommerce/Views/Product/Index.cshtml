@@ -14,6 +14,7 @@
         <th>Description</th>
         <th>Price</th>
         <th>Stock</th>
+        <th>Photo</th>
         <th>Category</th>
     </tr>
 
@@ -24,6 +25,7 @@
             <td>@product.Description</td>
             <td>@product.Price</td>
             <td>@product.Stock</td>
+            <td><img src="~/Content/@product.Photo" width="60" /></td>
             <td>@product.Category.Name</td>
         </tr>
     }

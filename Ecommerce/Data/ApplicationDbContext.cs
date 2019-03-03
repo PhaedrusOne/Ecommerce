@@ -7,6 +7,7 @@ namespace Ecommerce.Data
     public class ApplicationDbContext :DbContext
     {
         public DbSet<Product> Products { get; set; }
+        //public DbSet<Item> Items { get; set; }
         public DbSet<ProductCategory> Categories { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<ProductMenu> ProductMenus { get; set; }
