@@ -10,6 +10,10 @@ namespace Ecommerce.ViewModels
 {
     public class AddProductViewModel
     {
+        
+
+        //public int ID { get; set; }
+
         [Required]
         [Display(Name = "Product Name")]
         public string Name { get; set; }
@@ -47,9 +51,23 @@ namespace Ecommerce.ViewModels
             }
         }
 
+        
+
         public AddProductViewModel()
         {
 
+        }
+
+        private readonly List<Product> products = new List<Product>();
+
+        public List<Product> FindAll()
+        {
+            return this.products;
+        }
+
+        public Product Find(int id)
+        {
+            return this.products.SingleOrDefault(c => c.ID.Equals(id));
         }
 
         

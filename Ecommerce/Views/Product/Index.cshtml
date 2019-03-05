@@ -10,24 +10,30 @@
 <table class="table">
 
     <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
         <th>Stock</th>
         <th>Photo</th>
         <th>Category</th>
+        <th>Buy Now</th>
     </tr>
 
     @foreach (var product in Model)
     {
-        <tr>
-            <td>@product.Name</td>
-            <td>@product.Description</td>
-            <td>@product.Price</td>
-            <td>@product.Stock</td>
-            <td><img src="~/Content/@product.Photo" width="60" /></td>
-            <td>@product.Category.Name</td>
-        </tr>
+    <tr>
+        <td>@product.ID</td>
+        <td>@product.Name</td>
+        <td>@product.Description</td>
+        <td>@product.Price</td>
+        <td>@product.Stock</td>
+        <td><img src="~/Content/@product.Photo" width="60" /></td>
+        <td>@product.Category.Name</td>
+        <td align="center">
+            <a asp-controller="cart" asp-action="buy" asp-route-id="@product.ID">Buy Now</a>
+        </td>
+    </tr>
     }
 </table> 
 

@@ -8,37 +8,51 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Session;
 using Ecommerce.Helpers;
+using Ecommerce.ViewModels;
+using Ecommerce.Data;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Ecommerce.Controllers
 {
+    //[Route("cart")]
     public class CartController : Controller
     {
+
+        private readonly ApplicationDbContext context;
+
+        public CartController(ApplicationDbContext dbContext)
+        {
+            this.context = dbContext;
+        }
         //public static string Session;
 
+
+        readonly List<ItemLine> item = new List<ItemLine>();
         public ActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+
+            
+            var cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
             return View();
         }
 
-       
 
-        public ActionResult Buy(string id)
+
+        public IActionResult Buy(int id)
         {
-            ProductModel productModel = new ProductModel();
-            if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
+            AddProductViewModel productModel = new AddProductViewModel();
+            if (SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart") == null)
             {
-                List<Item> cart = new List<Item>();
-                cart.Add(new Item { Product = productModel.Find(id), Quantity = 1 });
+                var cart = new List<ItemLine>();
+                cart.Add(new ItemLine() { Product = context.Products.Find(id), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             else
             {
-                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
                 int index = IsExist(id);
                 if (index != -1)
                 {
@@ -46,16 +60,21 @@ namespace Ecommerce.Controllers
                 }
                 else
                 {
-                    cart.Add(new Item { Product = productModel.Find(id), Quantity = 1 });
+                    cart.Add(new ItemLine { Product = context.Products.Find(id), Quantity = 1 });
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             return RedirectToAction("Index");
         }
 
+        private int IsExist(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public ActionResult Remove(string id)
         {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
             int index = IsExist(id);
             cart.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
@@ -64,7 +83,7 @@ namespace Ecommerce.Controllers
 
         private int IsExist(string id)
         {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
             for (int i = 0; i < cart.Count; i++)
             {
                 if (cart[i].Product.ID.Equals(id))
