@@ -10,9 +10,7 @@ namespace Ecommerce.ViewModels
 {
     public class AddProductViewModel
     {
-        
-
-        //public int ID { get; set; }
+               
 
         [Required]
         [Display(Name = "Product Name")]

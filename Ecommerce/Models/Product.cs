@@ -10,7 +10,7 @@ namespace Ecommerce.Models
     {
         internal object productId;
 
-        public int ID { get; set; }
+       public int ID { get; set; }
        public string Name { get; set; }
        public string Description { get; set; }
        [Required]
@@ -32,13 +32,7 @@ namespace Ecommerce.Models
         public List<ProductMenu> ProductMenus { get; set; }
 
         public List<ProductOrder> ProductOrders { get; set; }
-        //public object ProductID { get; internal set; }
-        //public object ProductID { get; internal set; }
-
-
-
-
-        //public int Quantity { get; set; }
-        //public double TotalSale { get; set; }
+        
+        
     }
 }

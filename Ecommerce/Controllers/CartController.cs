@@ -15,7 +15,7 @@ using Ecommerce.Data;
 
 namespace Ecommerce.Controllers
 {
-    //[Route("cart")]
+    
     public class CartController : Controller
     {
 
@@ -25,7 +25,7 @@ namespace Ecommerce.Controllers
         {
             this.context = dbContext;
         }
-        //public static string Session;
+        
 
 
         readonly List<ItemLine> item = new List<ItemLine>();
@@ -40,10 +40,10 @@ namespace Ecommerce.Controllers
         }
 
 
-
+        [Route("buy/{id}")]
         public IActionResult Buy(int id)
         {
-            AddProductViewModel productModel = new AddProductViewModel();
+            
             if (SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart") == null)
             {
                 var cart = new List<ItemLine>();
@@ -53,37 +53,35 @@ namespace Ecommerce.Controllers
             else
             {
                 List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
-                int index = IsExist(id);
-                if (index != -1)
+                int index = IsExist(cart, id);
+                if (index == -1)
                 {
-                    cart[index].Quantity++;
+                    cart.Add(new ItemLine { Product = context.Products.Find(id), Quantity = 1 }); 
                 }
                 else
                 {
-                    cart.Add(new ItemLine { Product = context.Products.Find(id), Quantity = 1 });
+                    cart[index].Quantity++;
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             return RedirectToAction("Index");
         }
 
-        private int IsExist(int id)
+        [Route("Remove/{id}")]
+        public IActionResult Remove(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public ActionResult Remove(string id)
-        {
+                       
             List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
-            int index = IsExist(id);
+            int index = IsExist(cart, id);
             cart.RemoveAt(index);
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart); 
             return RedirectToAction("Index");
         }
+      
 
-        private int IsExist(string id)
+        private int IsExist(List<ItemLine> cart, int id)
         {
-            List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
+           
             for (int i = 0; i < cart.Count; i++)
             {
                 if (cart[i].Product.ID.Equals(id))
@@ -94,56 +92,7 @@ namespace Ecommerce.Controllers
             return -1;
         }
 
-        //     private readonly CommerceContext _context;
-
-        //     public CartController(CommerceContext context)
-        //     {
-        //         _context = context;
-        //     }
-
-        //    public IActionResult Add(int id)
-        //    {
-        //         const string CartCookie = "Cart";
-
-        //Find product you want to add
-        //        Product p = Product.GetProduct(_context, id);
-
-        //Turn product into JSON
-        //string data = JsonConvert.SerializeObject(p);
-
-        //Get current shopping cart data
-        //         string cookieData =
-        //             HttpContext.Request.Cookies[CartCookie];
-
-        //        List<Product> products;
-        //        if (cookieData == null)
-        //        {
-        //            products = new List<Product>();
-        //       }
-        //       else
-        //       {
-        //           products =
-        //              JsonConvert.DeserializeObject<List<Product>>(cookieData);
-        //       }
-
-        //      products.Add(p);
-
-
-        // CookieOptions options = new CookieOptions();
-        //   options.Secure = true;
-        // options.MaxAge = TimeSpan.FromDays(365);
-
-        //Serialize ALL the products into a string
-        //      string data =
-        //        JsonConvert.SerializeObject(products);
-
-        //Store it in cookie
-        //     HttpContext.Response.Cookies
-        //       .Append(CartCookie, data, options);
-
-        //Thank user and display product info
-        //   return View(p);
-        //  }
+        
     }
     
     

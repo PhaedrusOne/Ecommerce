@@ -24,8 +24,8 @@ namespace Ecommerce.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ProductModel productModel = new ProductModel();
-            ViewBag.products = productModel.FindAll();
+            //ProductModel productModel = new ProductModel();
+            //ViewBag.products = productModel.FindAll();
 
             IList<Product> products = context.Products.Include(c => c.Category).ToList();
 
@@ -51,6 +51,7 @@ namespace Ecommerce.Controllers
                     Description = addProductViewModel.Description,
                     Price = addProductViewModel.Price,
                     Stock = addProductViewModel.Stock,
+                    Photo = addProductViewModel.Photo,
                     Category = newProductCategory
                 };
 

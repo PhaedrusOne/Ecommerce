@@ -28,7 +28,7 @@
         <td>@product.Description</td>
         <td>@product.Price</td>
         <td>@product.Stock</td>
-        <td><img src="~/Content/@product.Photo" width="60" /></td>
+        <td><img src="~/images/@product.Photo" width="60" /></td>
         <td>@product.Category.Name</td>
         <td align="center">
             <a asp-controller="cart" asp-action="buy" asp-route-id="@product.ID">Buy Now</a>
