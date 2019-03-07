@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Ecommerce.Models.Order>
+
+<h1>Orders</h1>
+
+<p><a asp-controller="Order" asp-action="AddItem">Add Order</a></p>
+
+<ul>
+    @foreach (var order in Model)
+    {
+        <li>
+            <a asp-controller="Order"
+               asp-action="ViewOrder"
+               asp-route-id="@order.ID">Order</a>
+        </li>
+    }
+</ul>

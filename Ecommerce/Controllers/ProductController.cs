@@ -8,47 +8,51 @@ using Ecommerce.ViewModels;
 using Ecommerce.Data;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Ecommerce.Controllers
 {
     public class ProductController : Controller
     {
 
-        private ApplicationDbContext context;
+        private readonly ApplicationDbContext context;
 
         public ProductController(ApplicationDbContext dbContext)
         {
-            context = dbContext;
+            this.context = dbContext;
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
+            //ProductModel productModel = new ProductModel();
+            //ViewBag.products = productModel.FindAll();
 
-            List<Product> products = context.Products.ToList();
+            IList<Product> products = context.Products.Include(c => c.Category).ToList();
 
             return View(products);
         }
 
         public IActionResult Add()
         {
-            AddProductViewModel addProductViewModel = new AddProductViewModel();
+            AddProductViewModel addProductViewModel = new AddProductViewModel(context.Categories.ToList());
             return View(addProductViewModel);
         }
         [HttpPost]
-        [Route("/Product/Add")]
         public IActionResult Add(AddProductViewModel addProductViewModel)
             
         {
             if (ModelState.IsValid)
             {
+                ProductCategory newProductCategory =
+                    context.Categories.Single(c => c.ID == addProductViewModel.CategoryID);
                 Product newProduct = new Product
                 {
                     Name = addProductViewModel.Name,
                     Description = addProductViewModel.Description,
                     Price = addProductViewModel.Price,
-                    Type = addProductViewModel.Type
+                    Stock = addProductViewModel.Stock,
+                    Photo = addProductViewModel.Photo,
+                    Category = newProductCategory
                 };
 
                 context.Products.Add(newProduct);
@@ -79,6 +83,25 @@ namespace Ecommerce.Controllers
             return Redirect("/");
 
         }
+
+        public IActionResult Category(int id)
+        {
+            if (id == 0)
+            {
+                return Redirect("/Category");
+            }
+
+            ProductCategory theCategory = context.Categories
+                .Include(cat => cat.Products)
+                .Single(cat => cat.ID == id);
+
+
+            ViewBag.title = "Products in category: " + theCategory.Name;
+
+            return View("Index", theCategory.Products);
+
+        }
+
     }   
     
 }

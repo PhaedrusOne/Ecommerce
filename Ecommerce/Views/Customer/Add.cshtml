@@ -1,0 +1,42 @@
+﻿@model Ecommerce.ViewModels.AddCustomerViewModel
+
+<h1>Register</h1>
+
+
+<form asp-controller="Customer" asp-action="Add" method="post">
+    
+    <div class="form-group">
+        <label asp-for="FName"></label><br/>
+        <input class="col-sm-3" maxlength="10"  asp-for="FName" />
+        <span asp-validation-for="FName"></span><br/>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LName"></label><br/>
+        <input class="col-sm-3"  asp-for="LName" /><br/>
+        <span asp-validation-for="LName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label><br/>
+        <input class="col-sm-3" maxlength="20" asp-for="Email" /><br/>
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label><br/>
+        <input class="col-sm-3" maxlength="20" asp-for="Password" /><br/>
+        <span asp-validation-for="Password"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Verify"></label><br/>
+        <input class="col-sm-3" maxlength="20" asp-for="Verify" /><br/>
+        <span asp-validation-for="Verify"></span>
+    </div>
+    <br/>
+
+    <input type="submit" value="Add Customer" />
+
+</form>
+

@@ -1,0 +1,18 @@
+﻿@model Ecommerce.ViewModels.AddOrderItemViewModel
+
+@{
+    //ViewBag.Title = "Add Item to Product: " ;
+}
+
+<form asp-controller="Order" asp-action="AddItem" method="post">
+
+    <div class="form-group">
+        <label asp-for="ProductID"></label>
+        <select asp-for="ProductID" asp-items="Model.Products"></select>
+        <span asp-validation-for="ProductID"></span>
+    </div>
+
+    <input type="hidden" name="OrderID" value="@Model.Order.ID" />
+
+    <input type="submit" value="Add Item" />
+</form>

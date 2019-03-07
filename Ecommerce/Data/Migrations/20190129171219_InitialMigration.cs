@@ -36,8 +36,11 @@ namespace Ecommerce.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<float>(nullable: false),
+                    Photo = table.Column<string>(nullable:true),
                     Type = table.Column<int>(nullable: false),
+                    Stock = table.Column<int>(nullable: false),
                     ID = table.Column<int>(nullable: false)
+                    
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>

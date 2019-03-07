@@ -1,0 +1,18 @@
+﻿@model Ecommerce.ViewModels.AddMenuItemViewModel
+
+@{
+    ViewBag.Title = "Add Item to Menu: " + Model.Menu.Name;
+}
+
+<form asp-controller="Menu" asp-action="AddItem" method="post">
+
+    <div class="form-group">
+        <label asp-for="ProductID"></label>
+        <select asp-for="ProductID" asp-items="Model.Products"></select>
+        <span asp-validation-for="ProductID"></span>
+    </div>
+
+    <input type="hidden" name="MenuID" value="@Model.Menu.ID" />
+
+    <input type="submit" value="Add Item" />
+</form>

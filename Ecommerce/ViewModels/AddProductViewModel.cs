@@ -10,42 +10,64 @@ namespace Ecommerce.ViewModels
 {
     public class AddProductViewModel
     {
+               
+
         [Required]
         [Display(Name = "Product Name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "You must give your product a description")]
+   
         public string Description { get; set; }
 
         [Required(ErrorMessage = "You must give your product a price")]
+
         public float Price { get; set; }
 
-        public ProductType Type { get; set; }
+        [Required(ErrorMessage = "You must give a Inventory")]
+        public int Stock { get; set; }
 
-        public List<SelectListItem> ProductTypes { get; set; }
+        public string Photo { get; set; }
+
+        [Required]
+        [Display(Name = "Category")]
+        public int CategoryID { get; set; }
+
+        public List<SelectListItem> Categories { get; set; }
+
+        public AddProductViewModel(IEnumerable<ProductCategory> categories)
+        {
+            Categories = new List<SelectListItem>();
+
+            foreach (ProductCategory category in categories)
+            {
+                Categories.Add(new SelectListItem
+                {
+                    Value = category.ID.ToString(),
+                    Text = category.Name
+                });
+            }
+        }
+
+        
 
         public AddProductViewModel()
         {
-            ProductTypes = new List<SelectListItem>();
-
-            ProductTypes.Add(new SelectListItem
-            {
-                Value = ((int)ProductType.Sale).ToString(),
-                Text = ProductType.Sale.ToString()
-            });
-
-            ProductTypes.Add(new SelectListItem
-            {
-                Value = ((int)ProductType.Clearance).ToString(),
-                Text = ProductType.Clearance.ToString()
-            });
-
-            ProductTypes.Add(new SelectListItem
-            {
-                Value = ((int)ProductType.SoldOut).ToString(),
-                Text = ProductType.SoldOut.ToString()
-            });
 
         }
+
+        private readonly List<Product> products = new List<Product>();
+
+        public List<Product> FindAll()
+        {
+            return this.products;
+        }
+
+        public Product Find(int id)
+        {
+            return this.products.SingleOrDefault(c => c.ID.Equals(id));
+        }
+
+        
     }
 }
