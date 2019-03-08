@@ -47,8 +47,8 @@ namespace Ecommerce.Controllers
                 if (addCustomerViewModel.Verify == addCustomerViewModel.Password)
                 {
 
-                    // List<Customer> matches = context.Customers.Where(c => c.Email == addCustomerViewModel.Email);
-                    var matches = 0;
+                    //List<Customer> matches = context.Customers.Where(c => c.Email == addCustomerViewModel.Email);
+                    //var matches = 0;
 
 
 
@@ -59,7 +59,7 @@ namespace Ecommerce.Controllers
 
                         if(customer.Email == addCustomerViewModel.Email)
                         {
-                            matches = 1;
+                            //matches = 1;
 
                             ViewBag.error = "That email is already in our system.";
 

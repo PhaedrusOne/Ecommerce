@@ -8,7 +8,7 @@ namespace Ecommerce.Models
 {
     public class Product
     {
-        internal object productId;
+       internal object productId;
 
        public int ID { get; set; }
        public string Name { get; set; }

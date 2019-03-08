@@ -1,0 +1,15 @@
+﻿@model Ecommerce.Models.ProductCategory
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+<h2>Browse Category: @Model.Name</h2>
+<ul>
+    @foreach(var item in Model.Products)
+    {
+        <li>
+            @Html.ActionLink(item.Name, "Details", new { id=item.ID})
+        </li>
+    }
+</ul>

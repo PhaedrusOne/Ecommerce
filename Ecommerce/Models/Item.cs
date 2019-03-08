@@ -18,10 +18,6 @@ namespace Ecommerce.Models
             get { return lineCollection; }
         }
 
-        
-
-        //public Product Product { get; internal set; }
-        //public int Quantity { get; internal set; }
 
         //Adds a item or quanity to the shopping cart for a specific product
         public void AddItem(Product product, int quantity)
