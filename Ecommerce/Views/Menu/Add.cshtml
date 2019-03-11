@@ -4,8 +4,8 @@
 
 <form asp-controller="Menu" asp-action="Add" method="post">
     <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
+        <label asp-for="Name"></label><br/>
+        <input asp-for="Name" class="col-sm-3" /><br/>
         <span asp-validation-for="Name"></span>
     </div>
     <input type="submit" value="Create Menu" />
