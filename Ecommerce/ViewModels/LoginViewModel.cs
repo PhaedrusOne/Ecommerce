@@ -6,9 +6,12 @@ namespace Ecommerce.ViewModels
 {
     public class LoginViewModel
     {
-            [Required]
-            public string Email { get; set; }
-            [Required]
-            public string Password { get; set; }
+        [Required(ErrorMessage = "You must give a email address")]
+        [Display(Name = "Email Address")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "You must enter correct password")]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
     }
 }
