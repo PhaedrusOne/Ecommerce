@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,7 +39,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-
+        //Add item or quanity to the cart for that product
         [Route("buy/{id}")]
         public IActionResult Buy(int id)
         {
@@ -67,6 +67,8 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Index");
         }
 
+
+        //Remove the item for that product
         [Route("Remove/{id}")]
         public IActionResult Remove(int id)
         {

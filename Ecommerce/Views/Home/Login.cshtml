@@ -10,14 +10,14 @@
 <form asp-controller="Home" asp-action='Login' method='post' align="left">
 
     <div class="form-group">
-        <label asp-for="Email"></label>
-        <input class="form-control" asp-for="Email" />
+        <label asp-for="Email"></label><br/>
+        <input class="col-sm-3" maxlength="20" asp-for="Email" /><br />
         <span asp-validation-for="Email"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Password"></label>
-        <input class="form-control" asp-for="Password" />
+        <label asp-for="Password"></label></br>
+        <input class="col-sm-3" asp-for="Password" /><br/>
         <span asp-validation-for="Password"></span>
     </div>
 

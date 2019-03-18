@@ -17,7 +17,7 @@ namespace Ecommerce.Controllers
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext context;
-        private readonly int orderID;
+        //private readonly int orderID;
         //private readonly object o;
 
         public OrderController(ApplicationDbContext dbContext)
