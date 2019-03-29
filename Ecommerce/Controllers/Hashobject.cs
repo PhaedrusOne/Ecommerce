@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace Ecommerce.Models
 {
     public class Hashobject
     {
-
         public string Password { get; set; }
 
         public Hashobject(string password)
@@ -19,7 +14,6 @@ namespace Ecommerce.Models
 
         public string Hashedstring(string sSourceData)
         {
-
             byte[] tmpSource;
             byte[] tmpHash;
 

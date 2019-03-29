@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Data;
 using Ecommerce.Models;
 using Ecommerce.ViewModels;
-using System.Security.Policy;
 using Microsoft.AspNetCore.Http;
 
 namespace Ecommerce.Controllers
@@ -87,9 +84,7 @@ namespace Ecommerce.Controllers
 
             else
             {
-
                 return View();
-
             }
 
         }

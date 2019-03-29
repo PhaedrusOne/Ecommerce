@@ -1,21 +1,16 @@
-﻿    using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Ecommerce.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Microsoft.AspNetCore.Session;
 using Ecommerce.Helpers;
-using Ecommerce.ViewModels;
 using Ecommerce.Data;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Ecommerce.Controllers
 {
-    
+
     public class CartController : Controller
     {
 
@@ -30,9 +25,7 @@ namespace Ecommerce.Controllers
 
         readonly List<ItemLine> item = new List<ItemLine>();
         public ActionResult Index()
-        {
-
-            
+        {  
             var cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.Price * item.Quantity);
@@ -71,8 +64,7 @@ namespace Ecommerce.Controllers
         //Remove the item for that product
         [Route("Remove/{id}")]
         public IActionResult Remove(int id)
-        {
-                       
+        {                 
             List<ItemLine> cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
             int index = IsExist(cart, id);
             cart.RemoveAt(index);
@@ -82,8 +74,7 @@ namespace Ecommerce.Controllers
       
 
         private int IsExist(List<ItemLine> cart, int id)
-        {
-           
+        {       
             for (int i = 0; i < cart.Count; i++)
             {
                 if (cart[i].Product.ID.Equals(id))

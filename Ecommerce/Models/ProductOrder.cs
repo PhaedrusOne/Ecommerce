@@ -1,6 +1,4 @@
-﻿
-
-namespace Ecommerce.Models
+﻿namespace Ecommerce.Models
 {
    public class ProductOrder
    {
@@ -12,6 +10,5 @@ namespace Ecommerce.Models
 
       public int Quantity { get; set; }
       public double TotalSale { get; set; }
-
    }
 }

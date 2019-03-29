@@ -1,6 +1,4 @@
-﻿
-
-namespace Ecommerce.Models
+﻿namespace Ecommerce.Models
 {
     public class ProductMenu
     {

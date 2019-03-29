@@ -55,23 +55,16 @@ namespace Ecommerce.Controllers
                     List<Customer> customers = context.Customers.ToList();
                     foreach (Customer customer in customers)
                     {
-                       
-
                         if(customer.Email == addCustomerViewModel.Email)
                         {
                             //matches = 1;
 
                             ViewBag.error = "That email is already in our system.";
 
-                        }
-
-
-                        
+                        }                     
 
                     }
-
                     
-
                     Customer newCustomer = new Customer
                     {
                         FName = addCustomerViewModel.FName,
@@ -86,15 +79,12 @@ namespace Ecommerce.Controllers
                     //return Redirect("/Home/Registered");
                     return Redirect("/Customer");
 
-
                 }
-
 
             }
 
             return View(addCustomerViewModel);
         }
-
 
         public IActionResult Remove()
         {
