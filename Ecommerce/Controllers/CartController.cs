@@ -21,8 +21,6 @@ namespace Ecommerce.Controllers
             this.context = dbContext;
         }
         
-
-
         readonly List<ItemLine> item = new List<ItemLine>();
 
         public ActionResult Index()

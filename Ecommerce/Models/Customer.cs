@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ecommerce.Models
 {
     public class Customer //: IdentityUser
-    {
-        
+    {    
         public int ID { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
