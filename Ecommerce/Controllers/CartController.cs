@@ -24,6 +24,7 @@ namespace Ecommerce.Controllers
 
 
         readonly List<ItemLine> item = new List<ItemLine>();
+
         public ActionResult Index()
         {  
             var cart = SessionHelper.GetObjectFromJson<List<ItemLine>>(HttpContext.Session, "cart");
