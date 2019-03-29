@@ -1,7 +1,4 @@
-﻿
-
-using System;
-using Microsoft.AspNetCore.Identity;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Models
@@ -14,9 +11,7 @@ namespace Ecommerce.Models
         public string LName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
-
-        
+      
 
         public int State(string Loggedin, string Modelvalid)
        {

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Ecommerce.Models;
 using Ecommerce.ViewModels;
@@ -23,10 +21,7 @@ namespace Ecommerce.Controllers
 
         // GET: /<controller>/
         public IActionResult Index()
-        {
-            //ProductModel productModel = new ProductModel();
-            //ViewBag.products = productModel.FindAll();
-
+        {           
             IList<Product> products = context.Products.Include(c => c.Category).ToList();
 
             return View(products);
@@ -100,9 +95,7 @@ namespace Ecommerce.Controllers
 
             return View("Index", theCategory.Products);
 
-        }
-
-        
+        }       
 
     }   
     

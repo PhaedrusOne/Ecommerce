@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Ecommerce.Data;
 using Ecommerce.Models;
 using Ecommerce.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,7 +31,6 @@ namespace Ecommerce.Controllers
 
         public IActionResult Add()
         {
-
             AddOrderViewModel addOrderViewModel = new AddOrderViewModel();
 
             return View(addOrderViewModel);
@@ -64,7 +60,6 @@ namespace Ecommerce.Controllers
         [HttpGet]
         public IActionResult ViewOrder(int id)
         {
-
             List<ProductOrder> items = context
                 .ProductOrders
                 .Include(item => item.Product)
@@ -124,7 +119,6 @@ namespace Ecommerce.Controllers
             return View(addOrderItemViewModel);
 
         }
-
 
     }
 }

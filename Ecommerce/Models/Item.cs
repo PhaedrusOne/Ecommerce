@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace Ecommerce.Models
+﻿namespace Ecommerce.Models
 {
     public class Item
     {

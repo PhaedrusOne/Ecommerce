@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Ecommerce.Data;
 using Ecommerce.Models;
 using Ecommerce.ViewModels;
@@ -30,8 +28,7 @@ namespace Ecommerce.Controllers
         }
 
         public IActionResult Add()
-        {
-            
+        {          
             AddMenuViewModel addMenuViewModel = new AddMenuViewModel();
 
             return View(addMenuViewModel);
@@ -59,7 +56,6 @@ namespace Ecommerce.Controllers
         [HttpGet]
         public IActionResult ViewMenu(int id)
         {
-
             List<ProductMenu> items = context
                 .ProductMenus
                 .Include(item => item.Product)
@@ -98,7 +94,6 @@ namespace Ecommerce.Controllers
             context.SaveChanges();
 
             return Redirect("/");
-
         }
 
 
@@ -136,13 +131,11 @@ namespace Ecommerce.Controllers
                 }
                 ViewBag.title = "Add Item to Menu: ";
                 return Redirect(string.Format("/Menu/ViewMenu/{0}", addMenuItemViewModel.MenuID));
-
             }
 
             return View(addMenuItemViewModel);
 
         }
-
 
     }
 }

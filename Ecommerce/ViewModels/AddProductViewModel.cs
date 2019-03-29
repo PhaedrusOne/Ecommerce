@@ -1,17 +1,13 @@
 ﻿using Ecommerce.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Ecommerce.ViewModels
 {
     public class AddProductViewModel
-    {
-               
-
+    {            
         [Required]
         [Display(Name = "Product Name")]
         public string Name { get; set; }
@@ -48,9 +44,7 @@ namespace Ecommerce.ViewModels
                 });
             }
         }
-
-        
-
+    
         public AddProductViewModel()
         {
 
@@ -67,7 +61,6 @@ namespace Ecommerce.ViewModels
         {
             return this.products.SingleOrDefault(c => c.ID.Equals(id));
         }
-
-        
+      
     }
 }
